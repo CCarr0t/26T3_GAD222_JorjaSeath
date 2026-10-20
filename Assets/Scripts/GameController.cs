@@ -6,6 +6,9 @@ using System;
 
 public class GameController : MonoBehaviour
 {
+    int progressAmount;
+    public Slider progressSlider;
+
     public GameObject gameOverScreen;
 
     public static event Action OnReset;
@@ -14,8 +17,24 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        progressAmount = 0;
+        progressSlider.value = 0;
+        SoulFragment.OnSoulCollect += IncreaseProgressAmount;
+
         PlayerHealth.OnPlayerDied += GameOverScreen;
         gameOverScreen.SetActive(false);
+    }
+
+    void IncreaseProgressAmount(int amount)
+    {
+        progressAmount += amount;
+        progressSlider.value = progressAmount;
+
+        if (progressAmount >= 100)
+        {
+            //Level Complete!
+            Debug.Log("Level Complete!");
+        }
     }
 
     void GameOverScreen()
