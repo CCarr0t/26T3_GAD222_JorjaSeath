@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,6 +21,10 @@ public class Enemy : MonoBehaviour
     private int currentHealth;
     private SpriteRenderer spriteRenderer;
     private Color ogColor;
+
+    //LootTable
+    [Header("Loot")]
+    public List<LootItem> lootTable = new List<LootItem>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -107,6 +112,27 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        //Go around loottable
+        //Spawn item
+        foreach (LootItem lootItem in lootTable)
+        {
+            if (Random.Range(0f, 100f) <= lootItem.dropChance)
+            {
+                InstantiateLoot(lootItem.itemPrefab);
+            }
+            break;
+        }
+
         Destroy(gameObject);
+    }
+
+    void InstantiateLoot(GameObject loot)
+    {
+        if (loot)
+        {
+            GameObject droppedLoot = Instantiate(loot, transform.position, Quaternion.identity);
+
+            droppedLoot.GetComponent<SpriteRenderer>().color = Color.red;
+        }
     }
 }
