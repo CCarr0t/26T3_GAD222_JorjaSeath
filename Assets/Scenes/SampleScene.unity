@@ -2386,7 +2386,9 @@ MonoBehaviour:
     m_Bits: 64
   damage: 1
   maxHealth: 3
-  lootTable: []
+  lootTable:
+  - itemPrefab: {fileID: 1581793478406092909, guid: 6599930006c8e1946860079fcf3b872b, type: 3}
+    dropChance: 75
 --- !u!61 &396255503
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9134,7 +9136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &619394801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21425,7 +21427,9 @@ MonoBehaviour:
     m_Bits: 64
   damage: 1
   maxHealth: 3
-  lootTable: []
+  lootTable:
+  - itemPrefab: {fileID: 1581793478406092909, guid: 6599930006c8e1946860079fcf3b872b, type: 3}
+    dropChance: 75
 --- !u!61 &1787898667
 BoxCollider2D:
   m_ObjectHideFlags: 0
